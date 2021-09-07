@@ -3,7 +3,7 @@
 
 Self-contained, pretty and versatile `.tmux.conf` configuration file.
 
-![Screenshot](https://cloud.githubusercontent.com/assets/553208/19740585/85596a5a-9bbf-11e6-8aa1-7c8d9829c008.gif)
+![Screenshot](./screenshot.png)
 
 Installation
 ------------
@@ -20,9 +20,9 @@ existing `~/.tmux.conf` first)
 
 ```
 $ cd
-$ git clone https://github.com/gpakosz/.tmux.git
-$ ln -s -f .tmux/.tmux.conf
-$ cp .tmux/.tmux.conf.local .
+$ git clone https://github.com/gano3s/.tmux.git tmux
+$ ln -s -f tmux/.tmux.conf
+$ ln -s -f tmux/.tmux.conf.local
 ```
 
 💡 You can clone the repository anywhere you want, provided you create the
@@ -30,12 +30,14 @@ proper `~/.tmux.conf` symlink and you copy the `.tmux.conf.local` sample file in
 your home directory:
 
 ```
-$ git clone https://github.com/gpakosz/.tmux.git /path/to/oh-my-tmux
+$ git clone https://github.com/gano3s/.tmux.git tmux /path/to/oh-my-tmux
 $ ln -s -f /path/to/oh-my-tmux/.tmux.conf ~/.tmux.conf
-$ cp /path/to/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local
+$ ln -s -f /path/to/oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local
 ```
 
-Then proceed to [customize] your `~/.tmux.conf.local` copy.
+To properly load the local IP address it is necessary to update the path to the `local_ip.sh` specified in `.tmux.conf.local` in `tmux_conf_theme_status_right` variable.
+
+Then proceed to [customize] your `~/.tmux.conf.local`.
 
 [customize]: #configuration
 
