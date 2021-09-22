@@ -2,7 +2,12 @@
 
 if [ "$(uname)" == "Darwin" ]; then
     #running on Mac OS
-    INTERFACE=`netstat -nr | grep default | head -n 1| tr -s " " | cut -d " " -f 4 `
+    # check if there is more specific route than "default"
+    INTERFACE=`netstat -nr -f inet | grep "0/1" | head -n 1 |  tr -s " " | cut -d " " -f4`
+    if [ -z "$INTERFACE" ]
+    then
+        INTERFACE=`netstat -nr | grep default | head -n 1| tr -s " " | cut -d " " -f 4 `
+    fi
     IP=`ifconfig $INTERFACE 2>/dev/null | grep "inet " | tr -s " " | cut -d" " -f2`
     echo $IP 2>/dev/null
 else
