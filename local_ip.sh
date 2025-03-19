@@ -11,7 +11,7 @@ if [ "$(uname)" == "Darwin" ]; then
   echo $IP 2>/dev/null
 else
   #running on Linux
-  INTERFACE=$(netstat -nre | grep -v "127.0.0.0" | tail -n +3 | tr -s " " | cut -d " " -f 5,8 | sort -n | uniq | cut -d " " -f2 | head -1)
+  INTERFACE=$(netstat -nre | grep -v "127.0.0.0" | grep -v docker | tail -n +3 | tr -s " " | cut -d " " -f 5,8 | sort -n | uniq | cut -d " " -f2 | head -1)
   IP=$(ip addr show dev $INTERFACE 2>/dev/null | grep "inet " | tr -s " " | cut -d " " -f 3 | cut -d "/" -f1)
   echo $IP 2>/dev/null
 fi
